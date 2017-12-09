@@ -6,12 +6,16 @@ float sigma = 10;
 float roe = 28;
 float beta = 8/3;
 
+ArrayList<PVector> points = new ArrayList<PVector>();
+
 void setup() {
   size(800,600, P3D);
-  background(0);
+  colorMode(HSB);
 }
 
 void draw () {
+  background(0);
+  float hu = 0;
   float dt = 0.01;
   float dx = (sigma * (y - x)) * dt;
   float dy = (x * (roe - z) - y) * dt;
@@ -20,8 +24,23 @@ void draw () {
   y = y + dy;
   z = z + dz;
   
+  points.add(new PVector(x,y,z));
+  
   translate(400, 300);
   scale(5);
   stroke(255);
-  point(x, y, z);
+  noFill();
+  
+  
+  beginShape();
+  for (PVector v : points) {
+    stroke(hu, 255, 255);
+    vertex(v.x, v.y, v.z);
+    hu += .1;
+    if (hu >= 255) {
+      hu = 0;
+    }
+    
+  }
+  endShape();
 }
