@@ -6,16 +6,19 @@ class Star {
   Star() {
     x = random(0, width);
     y = random(0, height);
-    z = random(0, width);
+    z = width;
   }
   
   void update() {
+    z = z-1;
     
   }
   
   void show() {
     fill(255);
     noStroke();
-    ellipse(x,y,4,4);
+    float sx = map(x/z, 0, 1, 0, width);
+    float sy = map(y/z, 0, 1, 0, height);
+    ellipse(sx,sy,4,4);
   }
 }
