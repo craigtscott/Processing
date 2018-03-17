@@ -4,8 +4,8 @@ class Star {
   float z;
   
   Star() {
-    x = random(0, width);
-    y = random(0, height);
+    x = random(-width/2, width/2);
+    y = random(-height/2, height/2);
     z = width;
   }
   
