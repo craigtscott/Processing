@@ -19,9 +19,10 @@ void draw() {
   counts[currentDigit]++;
   
   float w = width / counts.length;
-  for (float i = 0; i < counts.length; i++){
+  for (int i = 0; i < counts.length; i++){
     float x = i * w + w/2;
     float y = height/2;
-    ellipse(x,y,16,16);
+    int diam = counts[i];
+    ellipse(x,y,diam,diam);
   }
 }
