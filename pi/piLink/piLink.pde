@@ -10,22 +10,23 @@ void setup() {
   String[] sdigits = pi.split("");
   println(sdigits.length);
   digits = int(sdigits);
-  
+  background(51);
 }
 
 void draw() {
-  background(51);
   translate(width/2, height/2);
   int currentDigit = digits[current];
+  int nextDigit = digits[current+1];
   current++;
-  counts[currentDigit]++;
+  float a1 = map(currentDigit, 0, 10, 0, TWO_PI);
+  float b1 = map(nextDigit, 0, 10, 0 , TWO_PI);
   
-  float w = width / counts.length;
-  for (int i = 0; i < counts.length; i++){
-    float a = map(i, 0, counts.length, 0, TWO_PI);
-    float x = 225 * cos(a);
-    float y = 225 * sin(a);
-    int diam = counts[i];
-    ellipse(x,y,diam,diam);
-  }
+  float x1 = 200 * cos(a1);
+  float y1 = 200 * sin(a1);
+  float x2 = 200 * cos(b1);
+  float y2 = 200 * sin(b1);
+  
+  stroke(255);
+  line(x1,y1,x2,y2);
+  
 }
