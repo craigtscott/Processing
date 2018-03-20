@@ -14,14 +14,17 @@ void setup() {
 }
 
 void draw() {
+  backgroun(51);
+  translate(width/2, height/2);
   int currentDigit = digits[current];
   current++;
   counts[currentDigit]++;
   
   float w = width / counts.length;
   for (int i = 0; i < counts.length; i++){
-    float x = i * w + w/2;
-    float y = height/2;
+    float a = map(i, 0, counts.length, 0, TWO_PI);
+    float x = 250 * cos(a);
+    float y = 250 * sin(a);
     int diam = counts[i];
     ellipse(x,y,diam,diam);
   }
