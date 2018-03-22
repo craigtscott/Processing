@@ -5,10 +5,10 @@ String pi;
 void setup() {
   size (600,600);
   pi = loadStrings("hunthow.txt")[0];
-
+  println(pi.length());
   beginRecord(PDF, "bookofpi.pdf");
-  float cols = 100;
-  float rows = 100;
+  float cols = 316;
+  float rows = 316;
   float w = width/cols;
   float h = height/rows;
   int index = 0;
