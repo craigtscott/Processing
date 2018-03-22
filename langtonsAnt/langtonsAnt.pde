@@ -5,25 +5,26 @@ void setup(){
  grid = new int[height][width];
  int x = 300;
  int y = 300;
- int dir;
+ int dir = 0;
  int north = 0;
  int east = 1;
  int south = 2;
  int west = 3;
- dir = north;
+
 }
 
 void turnRight() {
+  println(dir);
   dir++;
   if (dir > west) {
-    dir = north
+    dir = north;
   }
 }
 
 void turnleft() {
   dir--;
   if (dir < north) {
-    dir = west
+    dir = west;
   }
 }
 
@@ -63,4 +64,16 @@ void draw() {
     moveForward();
   }
   
+  loadPixels();
+  for(int i = 0; i < width; i ++){
+    for (int j = 0; j < height; j++){
+      int pix = i * width + j;
+      if (grid[i][j] == 0) {
+        pixels[pix] = color(255);
+    } else {
+      pixels[pix] = color(0);
+    }
+   }
+  updatePixels();
+  }
 }
