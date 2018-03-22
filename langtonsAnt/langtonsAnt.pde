@@ -37,6 +37,16 @@ void moveForward(){
   } else if (dir == west) {
     x--;
   }
+  
+  if ( x > width) {
+   x = 0; 
+  } else if ( x < 0 ) {
+   x = width - 1; 
+  } else  if ( y > height) {
+   y = 0; 
+  } else if ( y < 0 ) {
+   x = height - 1; 
+  }
 }
 
 void draw() {
@@ -46,6 +56,10 @@ void draw() {
   if (state == 0) {
     turnRight();
     state[x][y] = 1;
+    moveForward();
+  } else if (state == 1) {
+    turnLeft();
+    state[x][y] = 0;
     moveForward();
   }
   
