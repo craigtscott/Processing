@@ -1,8 +1,4 @@
 int[][] grid;
-
-void setup(){
- size(600,600);
- grid = new int[height][width];
  int x = 300;
  int y = 300;
  int dir = 0;
@@ -10,6 +6,11 @@ void setup(){
  int east = 1;
  int south = 2;
  int west = 3;
+
+void setup(){
+ size(600,600);
+ grid = new int[height][width];
+
 
 }
 
@@ -21,7 +22,7 @@ void turnRight() {
   }
 }
 
-void turnleft() {
+void turnLeft() {
   dir--;
   if (dir < north) {
     dir = west;
@@ -39,11 +40,11 @@ void moveForward(){
     x--;
   }
   
-  if ( x > width) {
+  if ( x > width - 1) {
    x = 0; 
   } else if ( x < 0 ) {
    x = width - 1; 
-  } else  if ( y > height) {
+  } else  if ( y > height - 1) {
    y = 0; 
   } else if ( y < 0 ) {
    x = height - 1; 
@@ -54,20 +55,23 @@ void draw() {
   background(255);
   int state = grid[x][y];
   
-  if (state == 0) {
-    turnRight();
-    state[x][y] = 1;
-    moveForward();
-  } else if (state == 1) {
-    turnLeft();
-    state[x][y] = 0;
-    moveForward();
+  
+  for (int n = 0; n < 100; n++) {
+    if (state == 0) {
+      turnRight();
+      grid[x][y] = 1;
+      moveForward();
+    } else if (state == 1) {
+      turnLeft();
+      grid[x][y] = 0;
+      moveForward();
+    }
   }
   
   loadPixels();
   for(int i = 0; i < width; i ++){
     for (int j = 0; j < height; j++){
-      int pix = i * width + j;
+      int pix = i + width * j;
       if (grid[i][j] == 0) {
         pixels[pix] = color(255);
     } else {
@@ -75,5 +79,6 @@ void draw() {
     }
    }
   updatePixels();
+
   }
 }
