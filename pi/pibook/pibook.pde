@@ -12,9 +12,13 @@ void setup() {
     for(float x = 0; x < width; x += w) {
       String stir = "" + pi.charAt(index);
       int digit = int(stir);
-      fill(0, random(255), 9);
+      float bright = map(digit, 0, 9, 0, 255);
+      fill(0, bright, 0);
       rect(x,y,w,h);
-      
+      fill(255-bright);
+      textAlign(CENTER);
+      text(digit, x+w/2, y+h);
+      index ++;
     }
   }
   
