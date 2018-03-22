@@ -4,7 +4,7 @@ void setup() {
   size (600,600);
   pi = loadStrings("hunthow.txt")[0];
   println(pi.length());
-
+  beginRecoed(pdf, "bookofpi.pdf")
   float w = 12;
   float h = 12;
   int index = 0;
@@ -16,10 +16,10 @@ void setup() {
       fill(0, bright, 0);
       rect(x,y,w,h);
       fill(255-bright);
-      textAlign(CENTER);
+      textAlign(CENTER, CENTER);
       text(digit, x+w/2, y+h);
       index ++;
     }
   }
-  
+  endRecord();
 }
