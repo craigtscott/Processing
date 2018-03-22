@@ -9,7 +9,7 @@ int[][] grid;
 
 void setup(){
  size(600,600);
- grid = new int[height][width];
+ grid = new int[width][height];
 
 
 }
@@ -40,23 +40,24 @@ void moveForward(){
     x--;
   }
   
-  if ( x > width - 1) {
+  if ( x > width-1) {
    x = 0; 
   } else if ( x < 0 ) {
-   x = width - 1; 
-  } else  if ( y > height - 1) {
+   x = width-1; 
+  } 
+  if ( y > 599) {
    y = 0; 
   } else if ( y < 0 ) {
-   x = height - 1; 
+   x = height-1; 
   }
 }
 
 void draw() {
   background(255);
-  int state = grid[x][y];
   
   
-  for (int n = 0; n < 100; n++) {
+  for (int n = 0; n < 1000; n++) {
+    int state = grid[x][y];
     if (state == 0) {
       turnRight();
       grid[x][y] = 1;
